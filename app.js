@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
         var randomNumber = Math.floor(Math.random() * squares.length)
         if (squares[randomNumber].innerHTML == 0) {
             squares[randomNumber].innerHTML = beginningNums[randBeginningNum]
+            coloring()
             scoreDisplay()
             checkGame()
         } 
@@ -254,12 +255,30 @@ document.addEventListener('DOMContentLoaded', () =>  {
         displayScore.innerHTML = score
     }
 
+    function coloring(){
+        for (let i = 0; i < squares.length; i++){
+            if(squares[i].innerHTML == 0 || squares[i].innerHTML == 2){squares[i].style.backgroundColor ='#E2BB4D'; squares[i].style.color = 'black'}
+            else if(squares[i].innerHTML == 4){squares[i].style.backgroundColor = '#DBA39A'; squares[i].style.color = 'white'}
+            else if(squares[i].innerHTML == 8){squares[i].style.backgroundColor = '#F0DBDB'; squares[i].style.color = 'black'}
+            else if(squares[i].innerHTML == 16){squares[i].style.backgroundColor = "#F5EBE0"; squares[i].style.color = 'black'}
+            else if(squares[i].innerHTML == 32){squares[i].style.backgroundColor = "#C58940"; squares[i].style.color = 'white'}
+            else if(squares[i].innerHTML == 64){squares[i].style.backgroundColor = "#FF7000"; squares[i].style.color = 'white'}
+            else if(squares[i].innerHTML == 128){squares[i].style.backgroundColor = "#540375"; squares[i].style.color = 'white'}
+            else if(squares[i].innerHTML == 256){squares[i].style.backgroundColor = "#10A19D"; squares[i].style.color = 'white'}
+            else if(squares[i].innerHTML == 512){squares[i].style.backgroundColor = "#5F8D4E"; squares[i].style.color = 'white'}
+            else if(squares[i].innerHTML == 1024){squares[i].style.backgroundColor = "#E5D9B6"; squares[i].style.color = 'black'}
+            else if(squares[i].innerHTML >= 2048){squares[i].style.backgroundColor = "#DC3535"; squares[i].style.color = 'white'}
+        }
+    }
+
     createBoard()
 
     document.onkeydown = function (event){
+        
         switch(event.keyCode){
             case 37:
                 moveLeft()
+                coloring()
                 console.log("Left")
                 generate()
                 break
@@ -283,4 +302,5 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 break
         }
     }
+    
 })
