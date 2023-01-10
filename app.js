@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () =>  {
     const gridDisplay = document.querySelector('.grid')
     const displayResult = document.getElementById('result')
+    const displayScore = document.getElementById('score')
+    let score = 0
     let squares = []
     const width = 4
 
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
         var randomNumber = Math.floor(Math.random() * squares.length)
         if (squares[randomNumber].innerHTML == 0) {
             squares[randomNumber].innerHTML = beginningNums[randBeginningNum]
+            scoreDisplay()
             checkGame()
         } 
         else generate()
@@ -50,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
                 for (let i = row.length-1; i >= 0; i--){
                     if(row[i] == row[i-1]){
-                        row[i] = row[i]*2
+                        row[i] = row[i-1]*2
+                        score += row[i-1]*2
                         row[i - 1] = NaN
                     }
                 }
@@ -104,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 for (let i = 0; i < row.length-1; i++){
                     if(row[i] == row[i+1]){
                         row[i] = row[i+1]*2
+                        score += row[i+1]*2
                         row[i+1] = NaN
                     }
                 }
@@ -153,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 for (let i = 0; i < row.length-1; i++){
                     if(row[i] == row[i+1]){
                         row[i] = row[i+1]*2
+                        score += row[i+1]*2
                         row[i+1] = NaN
                     }
                 }
@@ -200,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
             for (let i = 0; i < row.length-1; i++){
                 if(row[i] == row[i+1]){
                     row[i+1] = row[i]*2
+                    score += row[i]*2
                     row[i] = NaN
                 }
             }
@@ -241,6 +248,10 @@ document.addEventListener('DOMContentLoaded', () =>  {
         if(lose == 0){
             displayResult.innerHTML = "You Lost!"
         }
+    }
+
+    function scoreDisplay(){
+        displayScore.innerHTML = score
     }
 
     createBoard()
