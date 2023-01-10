@@ -48,10 +48,17 @@ document.addEventListener('DOMContentLoaded', () =>  {
                     l++
                 }
 
-                for (let i = row.length-1; i > 0; i--){
+                for (let i = row.length-1; i >= 0; i--){
                     if(row[i] == row[i-1]){
                         row[i] = row[i]*2
                         row[i - 1] = NaN
+                    }
+                }
+
+                for (let j=0; j < row.length-1; j++){
+                    if(row[j+1] % 2 != 0){
+                        row[j + 1] = row[j]
+                        row[j] = NaN
                     }
                 }
 
@@ -95,9 +102,16 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 }
                 
                 for (let i = 0; i < row.length-1; i++){
-                    if(row[i] == row[i-1]){
-                        row[i-1] = row[i]*2
-                        row[i] = NaN
+                    if(row[i] == row[i+1]){
+                        row[i] = row[i+1]*2
+                        row[i+1] = NaN
+                    }
+                }
+
+                for (let j=row.length-1; j > 0; j--){
+                    if(row[j-1] % 2 != 0){
+                        row[j - 1] = row[j]
+                        row[j] = NaN
                     }
                 }
 
@@ -137,9 +151,16 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 }
 
                 for (let i = 0; i < row.length-1; i++){
-                    if(row[i] == row[i-1]){
-                        row[i-1] = row[i]*2
-                        row[i] = NaN
+                    if(row[i] == row[i+1]){
+                        row[i] = row[i+1]*2
+                        row[i+1] = NaN
+                    }
+                }
+
+                for (let j=row.length-1; j > 0; j--){
+                    if(row[j-1] % 2 != 0){
+                        row[j - 1] = row[j]
+                        row[j] = NaN
                     }
                 }
 
@@ -180,6 +201,13 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 if(row[i] == row[i+1]){
                     row[i+1] = row[i]*2
                     row[i] = NaN
+                }
+            }
+
+            for (let j=0; j < row.length-1; j++){
+                if(row[j+1] % 2 != 0){
+                    row[j + 1] = row[j]
+                    row[j] = NaN
                 }
             }
 
