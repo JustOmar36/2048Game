@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', () =>  {
         var randBeginningNum = Math.floor(Math.random() * beginningNums.length)
         var randomNumber = Math.floor(Math.random() * squares.length)
         if (squares[randomNumber].innerHTML == 0) {
-        squares[randomNumber].innerHTML = beginningNums[randBeginningNum]
-        // checkForGameOver()
-        } else generate()
+            squares[randomNumber].innerHTML = beginningNums[randBeginningNum]
+            checkGame()
+        } 
+        else generate()
     }
 
     function moveRight(){
@@ -43,16 +44,15 @@ document.addEventListener('DOMContentLoaded', () =>  {
                             row[j + 1] = row[j]
                             row[j] = NaN
                         }
-                        else{
-                            if(row[j + 1] == row[j]){
-                                row[j + 1] = row[j] + row[j] 
-                                row[j] = NaN
-                                l = 1
-                                break
-                            }
-                        }
                     }
                     l++
+                }
+
+                for (let i = row.length-1; i > 0; i--){
+                    if(row[i] == row[i-1]){
+                        row[i] = row[i]*2
+                        row[i - 1] = NaN
+                    }
                 }
 
                 for (let i = 0; i < row.length; i++){
@@ -84,37 +84,23 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 let row = [parseInt(item1), parseInt(item2), parseInt(item3), parseInt(item4)]
                 let l = 0
 
-                if(row[3]%2 == 0){
-                    l=0
-                }
-                if(row[2]%2 == 0){
-                    l=1
-                }
-                if(row[1]%2 == 0){
-                    l=2
-                }
-                if(row[0]%2 == 0){
-                    l=3
-                }
-
                 while(l != 4){
                     for (let j=row.length-1; j > 0; j--){
                         if(row[j-1] % 2 != 0){
                             row[j - 1] = row[j]
                             row[j] = NaN
                         }
-                        else{
-                            if(row[j - 1] == row[j]){
-                                row[j - 1] = row[j] + row[j] 
-                                row[j] = NaN
-                                l = 1
-                                break
-                            }
-                        }
                     }
                    l++
                 }
-                l = 0 
+                
+                for (let i = 0; i < row.length-1; i++){
+                    if(row[i] == row[i-1]){
+                        row[i-1] = row[i]*2
+                        row[i] = NaN
+                    }
+                }
+
                 for (let i = 0; i < row.length; i++){
                     if(isNaN(row[i])){
                         row[i] = null
@@ -140,35 +126,21 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 let row = [parseInt(item1), parseInt(item2), parseInt(item3), parseInt(item4)]
                 let l = 0
 
-                if(row[3]%2 == 0){
-                    l=0
-                }
-                if(row[2]%2 == 0){
-                    l=1
-                }
-                if(row[1]%2 == 0){
-                    l=2
-                }
-                if(row[0]%2 == 0){
-                    l=3
-                }
-
                 while(l != 4){
                     for (let j=row.length-1; j > 0; j--){
                         if(row[j-1] % 2 != 0){
                             row[j - 1] = row[j]
                             row[j] = NaN
                         }
-                        else{
-                            if(row[j - 1] == row[j]){
-                                row[j - 1] = row[j] + row[j] 
-                                row[j] = NaN
-                                l = 1
-                                break
-                            }
-                        }
                     }
                     l++
+                }
+
+                for (let i = 0; i < row.length-1; i++){
+                    if(row[i] == row[i-1]){
+                        row[i-1] = row[i]*2
+                        row[i] = NaN
+                    }
                 }
 
                 for (let i = 0; i < row.length; i++){
@@ -176,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () =>  {
                         row[i] = null
                     }
                 }
-
 
                 squares[i].innerHTML = row[0]
                 squares[i+4].innerHTML = row[1]
@@ -195,35 +166,21 @@ document.addEventListener('DOMContentLoaded', () =>  {
             let row = [parseInt(item1), parseInt(item2), parseInt(item3), parseInt(item4)]
             let l = 0
 
-            if(row[3]%2 == 0){
-                l=0
-            }
-            if(row[2]%2 == 0){
-                l=1
-            }
-            if(row[1]%2 == 0){
-                l=2
-            }
-            if(row[0]%2 == 0){
-                l=3
-            }
-
             while(l != 4){
                 for (let j=0; j < row.length-1; j++){
                     if(row[j+1] % 2 != 0){
                         row[j + 1] = row[j]
                         row[j] = NaN
                     }
-                    else{
-                        if(row[j + 1] == row[j]){
-                            row[j + 1] = row[j] + row[j] 
-                            row[j] = NaN
-                            l = 1
-                            break
-                        }
-                    }
                 }
                 l++
+            }
+
+            for (let i = 0; i < row.length-1; i++){
+                if(row[i] == row[i+1]){
+                    row[i+1] = row[i]*2
+                    row[i] = NaN
+                }
             }
 
             for (let i = 0; i < row.length; i++){
@@ -264,28 +221,24 @@ document.addEventListener('DOMContentLoaded', () =>  {
         switch(event.keyCode){
             case 37:
                 moveLeft()
-                checkGame()
                 console.log("Left")
                 generate()
                 break
             
             case 38:
                 moveUp()
-                checkGame()
                 console.log("Up")
                 generate()
                 break
 
             case 39:
                 moveRight()
-                checkGame()
                 console.log("Right")
                 generate()
                 break
             
             case 40:
                 moveDown()
-                checkGame()
                 console.log("Down")
                 generate()
                 break
