@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                         if(row[j+1] % 2 != 0){
                             row[j + 1] = row[j]
                             row[j] = NaN
+            
                         }
                     }
                     l++
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                         row[i] = row[i-1]*2
                         score += row[i-1]*2
                         row[i - 1] = NaN
+        
                     }
                 }
 
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                     if(row[j+1] % 2 != 0){
                         row[j + 1] = row[j]
                         row[j] = NaN
+        
                     }
                 }
 
@@ -101,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                         if(row[j-1] % 2 != 0){
                             row[j - 1] = row[j]
                             row[j] = NaN
+            
                         }
                     }
                    l++
@@ -111,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                         row[i] = row[i+1]*2
                         score += row[i+1]*2
                         row[i+1] = NaN
+        
                     }
                 }
 
@@ -118,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                     if(row[j-1] % 2 != 0){
                         row[j - 1] = row[j]
                         row[j] = NaN
+        
                     }
                 }
 
@@ -151,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                         if(row[j-1] % 2 != 0){
                             row[j - 1] = row[j]
                             row[j] = NaN
+            
                         }
                     }
                     l++
@@ -161,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                         row[i] = row[i+1]*2
                         score += row[i+1]*2
                         row[i+1] = NaN
+        
                     }
                 }
 
@@ -168,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                     if(row[j-1] % 2 != 0){
                         row[j - 1] = row[j]
                         row[j] = NaN
+        
                     }
                 }
 
@@ -199,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                     if(row[j+1] % 2 != 0){
                         row[j + 1] = row[j]
                         row[j] = NaN
+        
                     }
                 }
                 l++
@@ -209,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                     row[i+1] = row[i]*2
                     score += row[i]*2
                     row[i] = NaN
+    
                 }
             }
 
@@ -216,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
                 if(row[j+1] % 2 != 0){
                     row[j + 1] = row[j]
                     row[j] = NaN
+    
                 }
             }
 
